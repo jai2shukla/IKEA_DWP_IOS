@@ -23,7 +23,7 @@ namespace IKEA_DWP_IOS
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // get something
-            var responseTask = client.GetAsync("GetEmployees")
+            var responseTask = client.GetAsync("GetEmployees");
 
             responseTask.Wait();
 
