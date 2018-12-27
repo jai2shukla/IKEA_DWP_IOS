@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -12,40 +13,69 @@ namespace IKEA_DWP_IOS
 {
     public partial class About : Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            IEnumerable<EmployeeViewModel> Employee = null;
-
-            var client = new HttpClient();
-
-            client.BaseAddress = new Uri("http://localhost:8081/api/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            // get something
-            var responseTask = client.GetAsync("GetEmployees");
-
-            responseTask.Wait();
-
-            //To store result of web api response.   
-            var result = responseTask.Result;
-
-            //If success received   
-            if (result.IsSuccessStatusCode)
+            if (!Page.IsPostBack)
             {
-                var data = result.Content.ReadAsStreamAsync();
-                //var readTask = result.Content.ReadAsAsync<IList<EmployeeViewModel>>();
-                data.Wait();
-                
-                //Employee = data.Result;
+                var data = findAll();
+                grdData.DataSource = data;
+                grdData.DataBind();
             }
-            else
-            {
-                //Error response received   
-                Employee = Enumerable.Empty<EmployeeViewModel>();
-                ModelState.AddModelError(string.Empty, "Server error try after some time.");
-            }
-
+            
         }
-    }
+        private string Base_URL = "http://localhost:8081/api/";  
+ 
+        public IEnumerable<EmployeeViewModel> findAll()
+        {  
+            try  
+           {  
+               HttpClient client = new HttpClient();  
+                client.BaseAddress = new Uri(Base_URL);  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));  
+                HttpResponseMessage response = client.GetAsync("GetEmployees").Result;  
+  
+               if (response.IsSuccessStatusCode)  
+                    return response.Content.ReadAsAsync<IEnumerable<EmployeeViewModel>>().Result;  
+                return null;  
+            }  
+            catch  
+            {  
+                return null;  
+            }  
+        }
+        public IEnumerable<EmployeeViewModel> find(int id)
+       {  
+            try  
+            {  
+                HttpClient client = new HttpClient();  
+                client.BaseAddress = new Uri(Base_URL);  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));  
+                HttpResponseMessage response = client.GetAsync("GetEmployees?id=" + id).Result;  
+  
+                if (response.IsSuccessStatusCode)  
+                    return response.Content.ReadAsAsync<IEnumerable<EmployeeViewModel>>().Result;  
+                return null;  
+            }  
+            catch  
+            {  
+                return null;  
+            }  
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            var data =find(Convert.ToInt32(txtSearch.Text));
+                        
+            grdData.DataSource = string.Empty;
+            grdData.DataBind();
+            grdData.DataSource = data;
+            grdData.DataBind();
+        }
+        public string GetName(string firstName, string lastName)
+        {  
+            return string.Concat(firstName," ", lastName);  
+        }
+
+}
 }

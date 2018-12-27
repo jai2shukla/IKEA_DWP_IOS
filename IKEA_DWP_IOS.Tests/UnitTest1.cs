@@ -9,6 +9,16 @@ namespace IKEA_DWP_IOS.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            About about = new About();
+            String firstName = "Shatrunjay";
+            string lastName = "Shukla";
+            string fullName = firstName + " " + lastName;
+            string expected = "shatrunjay";
+            string actual;
+            actual = about.GetName(firstName, lastName);
+            //Assert  
+            Assert.AreEqual(expected, actual);
+
         }
     }
 }
