@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace IKEA_DWP_IOS
 {
     public partial class About : Page
@@ -18,7 +19,8 @@ namespace IKEA_DWP_IOS
         {
             if (!Page.IsPostBack)
             {
-                var data = findAll();
+                
+                var data = findAll()
                 grdData.DataSource = data;
                 grdData.DataBind();
             }
