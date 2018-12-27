@@ -19,8 +19,8 @@ namespace IKEA_DWP_IOS
         {
             if (!Page.IsPostBack)
             {
-                
-                var data = findAll()
+
+                var data = findAll();
                 grdData.DataSource = data;
                 grdData.DataBind();
             }
