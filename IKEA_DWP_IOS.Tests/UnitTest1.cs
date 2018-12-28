@@ -13,11 +13,11 @@ namespace IKEA_DWP_IOS.Tests
             String firstName = "Shatrunjay";
             string lastName = "Shukla";
             string fullName = firstName + " " + lastName;
-            string expected = "shatrunjay";
+            string expected = "Shatrunjay Shukla";
             string actual;
             actual = about.GetName(firstName, lastName);
             //Assert  
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, fullName);
 
         }
     }
