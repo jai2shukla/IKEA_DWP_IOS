@@ -15,7 +15,7 @@ namespace IKEA_DWP_IOS.Tests
             string fullName = firstName + " " + lastName;
             string expected = "Shatrunjay Shukla";
             string actual;
-            actual = about.GetName(firstName, lastName);
+            actual = about.GetName(firstName, lastName); 
             //Assert  
             Assert.AreEqual(expected, fullName);
 
