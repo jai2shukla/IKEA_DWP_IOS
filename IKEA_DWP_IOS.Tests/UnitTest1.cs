@@ -10,7 +10,7 @@ namespace IKEA_DWP_IOS.Tests
         public void TestMethod1()
         {
             About about = new About();
-            String firstName = "Shatrunjay";
+            String firstName = "Shatrunjay"; 
             string lastName = "Shukla";
             string fullName = firstName + " " + lastName;
             string expected = "Shatrunjay Shukla";
