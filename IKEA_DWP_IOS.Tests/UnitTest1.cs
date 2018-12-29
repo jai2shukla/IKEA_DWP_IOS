@@ -20,5 +20,16 @@ namespace IKEA_DWP_IOS.Tests
             Assert.AreEqual(expected, fullName);
 
         }
+        [TestMethod]
+        public void Divide_FirstNumBySecondNum_ResultQuotient()
+        {
+            int expected = 5;
+            int fnum = 20;
+            int snum = 4;
+            int actual = Calculator.Divide(fnum, snum);
+            //Assert  
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }

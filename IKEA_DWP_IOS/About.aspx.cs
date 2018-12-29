@@ -80,4 +80,12 @@ namespace IKEA_DWP_IOS
         }
 
 }
+    public class Calculator
+    {
+        public static int Divide(int fnum,int snum)
+        {
+            int result = 0;
+            return result = fnum / snum;
+        }
+    }
 }
