@@ -69,7 +69,7 @@ namespace IKEA_DWP_IOS
         {
             var data =find(Convert.ToInt32(txtSearch.Text));
                         
-            grdData.DataSource = string.Empty;
+            grdData.DataSource = string.Empty; 
             grdData.DataBind();
             grdData.DataSource = data;
             grdData.DataBind();
