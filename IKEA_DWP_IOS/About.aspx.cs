@@ -19,6 +19,7 @@ namespace IKEA_DWP_IOS
         {
             if (!Page.IsPostBack)
             {
+                string dd = "";
                 var data1 = 888;
                 var data = findAll();
                 grdData.DataSource = data;
