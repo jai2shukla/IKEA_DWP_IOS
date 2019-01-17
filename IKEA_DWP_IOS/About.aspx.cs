@@ -21,7 +21,7 @@ namespace IKEA_DWP_IOS
             {
                
                
-                string bb = "";
+                string bb = ""
                 var data1 = 888;
                 var data = findAll();
                 grdData.DataSource = data;
