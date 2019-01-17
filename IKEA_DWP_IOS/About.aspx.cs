@@ -20,7 +20,7 @@ namespace IKEA_DWP_IOS
             if (!Page.IsPostBack)
             {
 
-
+                string temp = string.Empty;
                 string bb = "";
                 var data1 = 888;
                 var data = findAll();
