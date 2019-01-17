@@ -19,7 +19,7 @@ namespace IKEA_DWP_IOS
         {
             if (!Page.IsPostBack)
             {
-                string jj = "";
+               
                 string hh = string.Empty;
                 string bb = "";
                 var data1 = 888;
