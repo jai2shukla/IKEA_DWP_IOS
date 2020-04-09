@@ -8,7 +8,7 @@ trigger:
 
 pool:
   vmImage: 'windows-latest'
-
+- task: SonarQubePostTest@1
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
